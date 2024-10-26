@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: email_notification
+  main:
+    banner-mode: off
+  kafka:
+    consumer:
+      bootstrap-servers: localhost:9092,localhost:9094
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      group-id: product-created-events
+      properties:
+        spring:
+          json:
+            trusted:
+              packages: '*'
+
+logging:
+  level:
+    org.apache.kafka: off
