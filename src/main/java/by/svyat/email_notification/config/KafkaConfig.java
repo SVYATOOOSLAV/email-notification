@@ -66,10 +66,7 @@ public class KafkaConfig {
     @Bean
     public DefaultErrorHandler errorHandler(KafkaTemplate<String, Object> kafkaTemplate) {
         return new DefaultErrorHandler(
-                new DeadLetterPublishingRecoverer(kafkaTemplate){{
-                    addNotRetryableExceptions(NonRetryableException.class);
-                    addRetryableExceptions(RetryableException.class);
-                }},
+                new DeadLetterPublishingRecoverer(kafkaTemplate),
                 new FixedBackOff(3000, 3)
         );
     }
@@ -79,6 +76,9 @@ public class KafkaConfig {
             ConsumerFactory<String, Object> consumerFactory,
             DefaultErrorHandler errorHandler
     ) {
+        errorHandler.addNotRetryableExceptions(NonRetryableException.class);
+        errorHandler.addRetryableExceptions(RetryableException.class);
+
         return new ConcurrentKafkaListenerContainerFactory<>(){{
             setConsumerFactory(consumerFactory);
             setCommonErrorHandler(errorHandler);
