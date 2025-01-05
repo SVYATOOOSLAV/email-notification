@@ -13,6 +13,7 @@ public class KafkaConsumerConfig {
     private String keyDeserializer;
     private String valueDeserializer;
     private String groupId;
+    private String isolationLevel;
 
     @Value("${spring.kafka.consumer.properties.spring.json.trusted.packages}")
     private String trustedPackages;

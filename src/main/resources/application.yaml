@@ -24,6 +24,7 @@ spring:
           json:
             trusted:
               packages: by.svyat.kafkacommon.event
+      isolation-level: READ_COMMITTED
 
 logging:
   level:

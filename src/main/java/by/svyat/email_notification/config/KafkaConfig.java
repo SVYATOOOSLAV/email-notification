@@ -37,6 +37,7 @@ public class KafkaConfig {
         config.put(ErrorHandlingDeserializer.VALUE_DESERIALIZER_CLASS, JsonDeserializer.class);
         config.put(ConsumerConfig.GROUP_ID_CONFIG, kafkaConsumerConfig.getGroupId());
         config.put(JsonDeserializer.TRUSTED_PACKAGES, kafkaConsumerConfig.getTrustedPackages());
+        config.put(ConsumerConfig.ISOLATION_LEVEL_CONFIG, kafkaConsumerConfig.getIsolationLevel().toLowerCase());
 
         return config;
     }
