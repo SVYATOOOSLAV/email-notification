@@ -14,6 +14,7 @@ public class KafkaConsumerConfig {
     private String valueDeserializer;
     private String groupId;
     private String isolationLevel;
+    private String autoOffsetReset;
 
     @Value("${spring.kafka.consumer.properties.spring.json.trusted.packages}")
     private String trustedPackages;

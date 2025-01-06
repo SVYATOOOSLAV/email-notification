@@ -25,6 +25,7 @@ spring:
             trusted:
               packages: by.svyat.kafkacommon.event
       isolation-level: READ_COMMITTED
+      auto-offset-reset: latest
 
 logging:
   level:

@@ -38,6 +38,7 @@ public class KafkaConfig {
         config.put(ConsumerConfig.GROUP_ID_CONFIG, kafkaConsumerConfig.getGroupId());
         config.put(JsonDeserializer.TRUSTED_PACKAGES, kafkaConsumerConfig.getTrustedPackages());
         config.put(ConsumerConfig.ISOLATION_LEVEL_CONFIG, kafkaConsumerConfig.getIsolationLevel().toLowerCase());
+        config.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, kafkaConsumerConfig.getAutoOffsetReset());
 
         return config;
     }
